@@ -1,0 +1,491 @@
+/* Admin Design System - fully inherits site style (style.css + app.css) */
+@font-face {
+  font-family: 'Vazir';
+  src: url('../fonts/Vazir.woff2') format('woff2'),
+       url('../fonts/Vazir.woff') format('woff'),
+       url('../fonts/Vazir.ttf') format('truetype'),
+       url('../fonts/Vazir.eot');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Typography: use same font stack as site */
+* { font-family: 'Vazir', 'IRANSans', 'Tahoma', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+
+/* Color tokens mirroring site theme (see app.css) */
+:root {
+  --theme-ink: #0D3B66;
+  --theme-surface: #FFFFFF;
+  --theme-shadow: #E6F0FA;
+  --theme-accent: #5EABD6; /* sky-400 */
+  --theme-brand: #0D3B66;
+  --radius-12: 12px;
+  --radius-16: 16px;
+}
+
+body { background: #FFFCFB; color: var(--theme-ink); direction: rtl; }
+
+/* ===== OLD STRUCTURE (index.php) ===== */
+
+/* Header Styles for old structure */
+.admin-header { background: #BBDCE5; color: var(--theme-ink); padding: 1rem 1.25rem; box-shadow: 0 10px 30px var(--theme-shadow); position: fixed; width: 100%; top: 0; z-index: 1001; border-bottom: 1px solid var(--theme-shadow); height: 60px; }
+
+.admin-header h1 {
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin: 0;
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container Layout for old structure */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 60px;
+  margin: 0;
+}
+
+/* Sidebar Styles for old structure */
+.admin-sidebar { width: 280px; background: var(--theme-surface); padding: 1.25rem; box-shadow: 0 10px 30px var(--theme-shadow); position: fixed; height: calc(100vh - 60px); top: 60px; right: 0; z-index: 999; overflow-y: auto; border-left: 1px solid var(--theme-shadow); border-radius: 0; }
+
+.admin-sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.admin-sidebar li a,
+.admin-sidebar .sidebar-link { display:block; padding:.8rem 1rem; color: var(--theme-ink); text-decoration:none; border-radius: var(--radius-12); transition: all .25s ease; margin-bottom:.4rem; }
+
+.admin-sidebar li a:hover,
+.admin-sidebar .sidebar-link:hover { background: #E6F0FA; color: var(--theme-ink); transform: translateY(-1px); box-shadow: 0 6px 18px var(--theme-shadow); }
+
+.admin-sidebar li a.active,
+.admin-sidebar .sidebar-link.active {
+  background: linear-gradient(135deg, var(--teachers), var(--primary-dark));
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.admin-sidebar li a i,
+.admin-sidebar .sidebar-link i {
+  margin-left: 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* Sidebar Title */
+.admin-sidebar .sidebar-title {
+  color: var(--text-dark);
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-dark);
+  text-align: center;
+}
+
+/* Submenu Styles for old structure */
+.admin-sidebar ul ul {
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.admin-sidebar ul ul li a {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: var(--border-radius);
+  margin-bottom: 0.25rem;
+}
+
+/* Main Content for old structure */
+.main-content { flex:1; padding: 1.25rem; margin-right: 280px; min-height: calc(100vh - 60px); position: relative; z-index:1; }
+
+/* ===== NEW STRUCTURE (other admin pages) ===== */
+
+/* Navbar Styles (for pages using Bootstrap navbar) */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary-medium)) !important;
+  box-shadow: var(--box-shadow);
+  border-bottom: 3px solid var(--primary-light);
+}
+
+.navbar-brand {
+  color: var(--text-dark) !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar Styles for new structure */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, var(--primary-medium), var(--primary-light));
+  padding: 1.5rem 1rem;
+  box-shadow: var(--box-shadow);
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+  font-size: var(--font-size-base);
+  border-left: 3px solid var(--primary-dark);
+  z-index: 999;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .nav-link {
+  display: block;
+  padding: 1rem 1.5rem;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  margin-bottom: 0.5rem;
+  font-weight: normal;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar .nav-link:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--teachers));
+  color: var(--white);
+  transform: translateX(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.sidebar .nav-link.active {
+  background: linear-gradient(135deg, var(--teachers), var(--primary-dark));
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.sidebar .nav-link i {
+  margin-left: 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* Submenu Styles for new structure */
+.sidebar ul ul {
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+}
+
+.sidebar ul ul .nav-link {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: var(--border-radius);
+}
+
+/* Main Content for new structure */
+main {
+  padding: 2rem;
+  margin-right: 280px;
+  min-height: 100vh;
+  padding-top: 0;
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== COMMON STYLES ===== */
+
+/* Fix for content positioning */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Ensure content starts at the top */
+.admin-container > *:first-child {
+  margin-top: 0;
+}
+
+.main-content > *:first-child,
+main > *:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Section Styles */
+.data-section { background: var(--theme-surface); border-radius: var(--radius-16); padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 10px 30px var(--theme-shadow); border: 1px solid var(--theme-shadow); }
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--primary-light);
+  color: var(--text-dark);
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Table Styles */
+.custom-table, .table {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  border: none;
+  width: 100%;
+}
+
+.custom-table th, .table th { background: #E6F0FA; color: var(--theme-ink); font-weight: 800; padding: .9rem 1rem; border: none; text-align: right; }
+
+.custom-table td, .table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--primary-light);
+  vertical-align: middle;
+}
+
+.custom-table tr:hover, .table tbody tr:hover {
+  background: linear-gradient(135deg, rgba(173, 178, 212, 0.1), rgba(199, 217, 221, 0.1));
+  transform: scale(1.01);
+  transition: var(--transition);
+}
+
+/* Button Styles */
+.btn { border-radius: 12px; font-weight: 800; padding: .7rem 1.1rem; border: 2px solid transparent; box-shadow: 0 8px 20px var(--theme-shadow); }
+.btn:hover { transform: translateY(-2px); }
+.btn.btn-primary, .btn-primary { background: var(--theme-brand); color:#fff; border-color: var(--theme-brand); }
+.btn.btn-info { background: var(--theme-brand); color:#fff; }
+.btn.btn-danger { background: #E14434; color:#fff; }
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--posts), var(--primary-dark));
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--posts));
+  color: var(--white);
+}
+
+.btn-outline-primary {
+  background: transparent;
+  color: var(--posts);
+  border: 2px solid var(--posts);
+}
+
+.btn-outline-primary:hover {
+  background: var(--posts);
+  color: var(--white);
+}
+
+.btn-outline-danger {
+  background: transparent;
+  color: var(--users);
+  border: 2px solid var(--users);
+}
+
+.btn-outline-danger:hover {
+  background: var(--users);
+  color: var(--white);
+}
+
+.btn-edit {
+  background: linear-gradient(135deg, var(--teachers), var(--primary-dark));
+  color: var(--white);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, var(--users), var(--primary-dark));
+  color: var(--white);
+}
+
+.btn-view {
+  background: linear-gradient(135deg, var(--comments), var(--primary-dark));
+  color: var(--white);
+}
+
+.btn-approve {
+  background: linear-gradient(135deg, var(--ratings), var(--primary-dark));
+  color: var(--white);
+}
+
+.btn-view-all {
+  background: linear-gradient(135deg, var(--messages), var(--primary-dark));
+  color: var(--white);
+  margin-left: 0.5rem;
+}
+
+.btn-add-new {
+  background: linear-gradient(135deg, var(--teachers), var(--primary-dark));
+  color: var(--white);
+}
+
+/* Card Styles */
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+/* Alert Styles */
+.alert {
+  border-radius: var(--border-radius);
+  border: none;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alert-success { background: #E6F6EC; color: #1B5E20; border-right: 4px solid #A9CBB7; }
+
+.alert-danger { background: rgba(225,68,52,.08); color: #E14434; border-right: 4px solid #E6F0FA; }
+
+/* Badge Styles */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: normal;
+  font-size: 0.8rem;
+  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-danger {
+  background: linear-gradient(135deg, var(--users), #c0392b) !important;
+}
+
+.bg-secondary {
+  background: linear-gradient(135deg, var(--text-light), #95a5a6) !important;
+}
+
+.bg-success {
+  background: linear-gradient(135deg, var(--teachers), #27ae60) !important;
+}
+
+.bg-warning {
+  background: linear-gradient(135deg, var(--comments), #f39c12) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Section Actions */
+.section-actions {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--primary-light);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .admin-sidebar, .sidebar {
+    width: 250px;
+  }
+  
+  .main-content, main {
+    margin-right: 250px;
+  }
+}
+
+@media (max-width: 992px) {
+  .admin-sidebar, .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .main-content, main {
+    margin-right: 0;
+    padding-top: 1rem;
+    margin-top: 0;
+  }
+  
+  .admin-container {
+    flex-direction: column;
+    padding-top: 60px;
+  }
+  
+  .admin-header {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content, main {
+    padding: 1rem;
+  }
+  
+  .data-section {
+    padding: 1rem;
+  }
+  
+  .custom-table, .table {
+    font-size: 0.9rem;
+  }
+  
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .section-actions {
+    text-align: center;
+  }
+  
+  .actions {
+    justify-content: center;
+  }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.data-section, .card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Custom Scrollbar */
+.admin-sidebar::-webkit-scrollbar, .sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-sidebar::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track {
+  background: var(--primary-light);
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb, .sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+  border-radius: 3px;
+}
+
+.admin-sidebar::-webkit-scrollbar-thumb:hover, .sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dark);
+} 
