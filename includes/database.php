@@ -1,8 +1,8 @@
 <?php
-$host = "sql208.infinityfree.com";
+$host = "sql208.infinityfree.com";  // یا sql208.byetcluster.com
 $dbname = "if0_42380325_english_db";
 $username = "if0_42380325";
-$password = "glvx5qhd83fk";
+$password = "glvX5Qhd83fk";
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
