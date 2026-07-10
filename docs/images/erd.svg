@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <style>
+      .box{fill:#fff;stroke:#0D3B66;stroke-width:2;rx:10;ry:10;}
+      .title{fill:#0D3B66;font-family:Tahoma, sans-serif;font-size:18px;font-weight:bold;}
+      .text{fill:#0D3B66;font-family:Tahoma, sans-serif;font-size:14px;}
+      .line{stroke:#0D3B66;stroke-width:2;}
+      .crow{stroke:#0D3B66;fill:none;stroke-width:2;}
+    </style>
+  </defs>
+
+  <text x="600" y="40" text-anchor="middle" class="title">ERD سامانه</text>
+
+  <!-- USERS -->
+  <rect x="60" y="80" width="240" height="160" class="box"/>
+  <text x="180" y="105" text-anchor="middle" class="title">USERS</text>
+  <text x="80" y="135" class="text">id (PK)</text>
+  <text x="80" y="155" class="text">username, email, password</text>
+  <text x="80" y="175" class="text">role, created_at</text>
+
+  <!-- COURSES -->
+  <rect x="900" y="80" width="240" height="180" class="box"/>
+  <text x="1020" y="105" text-anchor="middle" class="title">COURSES</text>
+  <text x="920" y="135" class="text">id (PK), title, description</text>
+  <text x="920" y="155" class="text">category, level, price, status</text>
+  <text x="920" y="175" class="text">image_url, instructor_id (FK)</text>
+
+  <!-- ENROLLMENTS -->
+  <rect x="480" y="130" width="240" height="160" class="box"/>
+  <text x="600" y="155" text-anchor="middle" class="title">ENROLLMENTS</text>
+  <text x="500" y="185" class="text">id (PK), user_id (FK)</text>
+  <text x="500" y="205" class="text">course_id (FK), status</text>
+  <text x="500" y="225" class="text">enrolled_at</text>
+  <text x="500" y="245" class="text">UNIQUE(user_id, course_id)</text>
+
+  <!-- INSTRUCTORS -->
+  <rect x="60" y="360" width="240" height="150" class="box"/>
+  <text x="180" y="385" text-anchor="middle" class="title">INSTRUCTORS</text>
+  <text x="80" y="415" class="text">id (PK), name, bio</text>
+  <text x="80" y="435" class="text">photo_url, created_at</text>
+
+  <!-- POSTS -->
+  <rect x="480" y="360" width="240" height="150" class="box"/>
+  <text x="600" y="385" text-anchor="middle" class="title">POSTS</text>
+  <text x="500" y="415" class="text">id (PK), title, content</text>
+  <text x="500" y="435" class="text">image_url, instructor_id (FK)</text>
+
+  <!-- COMMENTS -->
+  <rect x="900" y="360" width="240" height="170" class="box"/>
+  <text x="1020" y="385" text-anchor="middle" class="title">COMMENTS</text>
+  <text x="920" y="415" class="text">id (PK), user_id (FK)</text>
+  <text x="920" y="435" class="text">post_id (FK), content, status</text>
+  <text x="920" y="455" class="text">created_at</text>
+
+  <!-- RATINGS -->
+  <rect x="60" y="560" width="240" height="140" class="box"/>
+  <text x="180" y="585" text-anchor="middle" class="title">RATINGS</text>
+  <text x="80" y="615" class="text">id (PK), user_id (FK)</text>
+  <text x="80" y="635" class="text">instructor_id (FK), rating</text>
+
+  <!-- CONTACT_MESSAGES -->
+  <rect x="900" y="560" width="240" height="140" class="box"/>
+  <text x="1020" y="585" text-anchor="middle" class="title">CONTACT_MESSAGES</text>
+  <text x="920" y="615" class="text">id (PK), name, email</text>
+  <text x="920" y="635" class="text">message, created_at</text>
+
+  <!-- Relations -->
+  <line x1="300" y1="160" x2="480" y2="200" class="line"/>
+  <line x1="720" y1="200" x2="900" y2="160" class="line"/>
+  <line x1="300" y1="430" x2="480" y2="430" class="line"/>
+  <line x1="720" y1="430" x2="900" y2="430" class="line"/>
+  <line x1="300" y1="630" x2="900" y2="630" class="line"/>
+
+</svg>
+
+

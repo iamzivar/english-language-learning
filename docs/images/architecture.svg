@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .box{fill:#ffffff;stroke:#0D3B66;stroke-width:2;rx:14;ry:14;}
+      .title{fill:#0D3B66;font-family:Tahoma, sans-serif;font-size:20px;font-weight:bold;}
+      .text{fill:#0D3B66;font-family:Tahoma, sans-serif;font-size:16px;}
+      .line{stroke:#0D3B66;stroke-width:2;marker-end:url(#arrow);} 
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0D3B66" />
+    </marker>
+  </defs>
+
+  <rect x="30" y="30" width="1140" height="640" fill="#E6F0FA" rx="20"/>
+  <text x="600" y="65" text-anchor="middle" class="title">معماری سامانه آموزش زبان انگلیسی</text>
+
+  <!-- Users -->
+  <rect x="60" y="110" width="220" height="90" class="box"/>
+  <text x="170" y="160" text-anchor="middle" class="text">کاربر (Front-site)</text>
+
+  <!-- Admin -->
+  <rect x="60" y="240" width="220" height="90" class="box"/>
+  <text x="170" y="290" text-anchor="middle" class="text">مدیر (Admin)</text>
+
+  <!-- Web/App -->
+  <rect x="360" y="110" width="290" height="220" class="box"/>
+  <text x="505" y="145" class="title">Apache + PHP</text>
+  <text x="380" y="180" class="text">UI: assets/css/app.css, assets/css/style.css</text>
+  <text x="380" y="210" class="text">Admin UI: admin/assets/css/admin.css</text>
+  <text x="380" y="240" class="text">Controllers: صفحات PHP</text>
+  <text x="380" y="270" class="text">Media: includes/media.php</text>
+
+  <!-- DB layer -->
+  <rect x="360" y="370" width="290" height="90" class="box"/>
+  <text x="505" y="415" class="title">includes/database.php (PDO)</text>
+
+  <!-- Database -->
+  <rect x="740" y="180" width="380" height="200" class="box"/>
+  <text x="930" y="215" class="title">MySQL / MariaDB</text>
+  <text x="760" y="250" class="text">جداول: users, instructors, courses, enrollments</text>
+  <text x="760" y="280" class="text">posts, comments, ratings, contact_messages</text>
+
+  <!-- Arrows -->
+  <line x1="280" y1="155" x2="360" y2="155" class="line"/>
+  <line x1="280" y1="285" x2="360" y2="285" class="line"/>
+  <line x1="505" y1="330" x2="505" y2="370" class="line"/>
+  <line x1="650" y1="415" x2="740" y2="280" class="line"/>
+
+  <!-- Legend -->
+  <text x="60" y="540" class="text">فلو: کاربر/مدیر ← Apache+PHP ←→ PDO ←→ MySQL</text>
+  <text x="60" y="570" class="text">UI یکپارچه با فونت Vazir و استایل‌های مشترک</text>
+</svg>
+
+
