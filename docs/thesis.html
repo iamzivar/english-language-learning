@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>پایان‌نامه سامانه آموزش زبان انگلیسی</title>
+  <style>
+    @font-face {
+      font-family: Vazir;
+      src: url('../assets/fonts/Vazir.woff2') format('woff2'),
+           url('../assets/fonts/Vazir.woff') format('woff'),
+           url('../assets/fonts/Vazir.ttf') format('truetype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+    body { font-family: Vazir, Tahoma, sans-serif; line-height: 1.9; color:#0D3B66; margin: 2.2cm; font-size: 12.5pt; }
+    h1, h2, h3 { color:#0D3B66; margin: .6em 0 .3em; }
+    h1 { font-size: 20pt; font-weight: 800; }
+    h2 { font-size: 16pt; font-weight: 800; border-bottom: 2px solid #E6F0FA; padding-bottom: .25rem; }
+    h3 { font-size: 13.5pt; font-weight: 800; }
+    p { margin: .4em 0; }
+    ul { margin: .3em 1.2em .6em 0; }
+    li { margin: .2em 0; }
+    .title { text-align: center; margin-bottom: 1.2rem; }
+    .muted { color:#335f88; }
+    .mono { direction:ltr; unicode-bidi: plaintext; font-family: Consolas, monospace; }
+    .pagebreak { page-break-after: always; }
+    table { width:100%; border-collapse: collapse; margin: .6rem 0; }
+    th, td { border:1px solid #E6F0FA; padding:.45rem .6rem; }
+    th { background:#E6F0FA; font-weight:800; }
+    .toc h2 { border:0; }
+  </style>
+  <!-- This HTML is Word-compatible: Open with Microsoft Word and Save As .docx -->
+</head>
+<body>
+
+  <div class="title">
+    <p style="margin:0 0 10px;">
+      <img src="images/university-logo.png" alt="لوگوی دانشگاه" style="height:120px;">
+    </p>
+    <h1>سایت مدیریت و آموزش زبان انگلیسی</h1>
+    <p class="muted">پروژه: english_language_learning</p>
+    <p class="muted">دانشگاه: سجاد | مقطع/رشته: کاردانی نرم‌افزار کامپیوتر</p>
+    <p class="muted">استاد راهنما: شکرانی | نگارنده: زیور پرگاتی</p>
+    <p class="muted">تاریخ: 1404/07/04</p>
+  </div>
+
+  <h2>چکیده</h2>
+  <p>این پروژه یک سامانه وب برای آموزش زبان انگلیسی است که شامل وب‌سایت کاربری و پنل مدیریت می‌باشد. کاربران می‌توانند دوره‌ها را مرور و ثبت‌نام کنند؛ مدیر سیستم محتوای آموزشی (اساتید، پست‌ها، دوره‌ها)، تعاملات (نظرات، امتیازات، پیام‌ها) و گزارش‌های تحلیلی (ثبت‌نام کاربران، عملکرد اساتید) را مدیریت می‌کند. معماری پروژه مبتنی بر PHP و MySQL با استفاده از PDO و ساختار ساده و قابل نگهداری است. در این پایان‌نامه، نیازمندی‌ها، معماری، طراحی پایگاه‌داده، امنیت، تست، استقرار، مقیاس‌پذیری، و مسیر توسعه آینده تشریح شده است.</p>
+
+  <div class="toc">
+    <h2>فهرست مطالب</h2>
+    <ol>
+      <li>مقدمه و بیان مسئله</li>
+      <li>مرور کلی سیستم</li>
+      <li>کارهای مرتبط</li>
+      <li>روش تحقیق</li>
+      <li>فناوری‌ها و معماری</li>
+      <li>طراحی پایگاه‌داده</li>
+      <li>ویژگی‌ها و جریان‌های کاری</li>
+      <li>امنیت و محرمانگی</li>
+      <li>تصمیمات پیاده‌سازی</li>
+      <li>تست و کیفیت</li>
+      <li>استقرار و پیکربندی</li>
+      <li>کارایی و مقیاس‌پذیری</li>
+      <li>توسعه آینده</li>
+      <li>محدودیت‌ها و ریسک‌ها</li>
+      <li>نتیجه‌گیری</li>
+      <li>ضمائم: معماری و ERD</li>
+    </ol>
+  </div>
+
+  <h2>1) مقدمه و بیان مسئله</h2>
+  <p>نیاز به بستری سبک، RTL، قابل استقرار روی XAMPP برای مدیریت دوره‌های زبان انگلیسی، ثبت‌نام کاربران، و گزارش‌گیری مدیریتی. هدف، ارائه تجربه یکپارچه برای کاربر و ادمین و پوشش جریان‌های کلیدی است.</p>
+
+  <h2>2) مرور کلی سیستم</h2>
+  <ul>
+    <li><b>بخش کاربری:</b> صفحه اصلی، فهرست و پیش‌نمایش دوره‌ها، اساتید، پست‌ها، ثبت‌نام در دوره، ورود/ثبت‌نام.</li>
+    <li><b>بخش مدیریت:</b> مدیریت کاربران، اساتید، پست‌ها، نظرات، امتیازات، پیام‌ها، گزارش ثبت‌نام‌ها و گزارش اساتید.</li>
+    <li><b>قابلیت‌های کلیدی:</b> جدول واسط ثبت‌نام‌ها با جلوگیری از تکراری، گزارش‌های تحلیلی، UI یکپارچه، فونت مشترک.</li>
+  </ul>
+
+  <h2>کارهای مرتبط</h2>
+  <p>پلتفرم‌های آموزش زبان نظیر Coursera/Udemy (دوره‌های عمومی) و Duolingo/Memrise (یادگیری تعاملی) هریک بر بخشی از نیازها تمرکز دارند. سامانه حاضر با رویکرد سبک و قابل‌استقرار محلی (XAMPP) و تمرکز بر مدیریت محتوای بومی، گزارش‌گیری ادمین و ثبت‌نام دوره‌ها برای سناریوهای سازمانی/آموزشگاهی مناسب‌سازی شده است. نسبت به CMSهای عمومی، ساختار دیتابیس اختصاصی (enrollments/ratings/comments) و گزارش‌های تحلیلی دقیق بر کاربران/اساتید ارائه می‌کند.</p>
+  <ul>
+    <li>مزیت‌ها: نصب سریع، سادگی نگهداری، شخصی‌سازی آسان UI/داده‌ها، گزارش‌های مدیریتی.</li>
+    <li>محدودیت‌ها: نبود LMS کامل (آزمون/تکلیف/گواهی) که در توسعه آینده پیش‌بینی شده است.</li>
+  </ul>
+
+  <h2>روش تحقیق</h2>
+  <p>روش تحقیق مبتنی بر مهندسی نرم‌افزار تکرارشونده است: گردآوری نیازمندی‌ها، طراحی معماری و دیتابیس، پیاده‌سازی افزایشی (ویژگی‌های کاربر/ادمین/گزارش‌ها)، و اعتبارسنجی از طریق تست کارکردی. انتخاب فناوری‌ها بر اساس در دسترس بودن، سازگاری با محیط‌های آموزشی، و هزینه نگهداری انجام شده است. معیارهای ارزیابی شامل کارایی (پاسخگویی کوئری‌ها)، امنیت پایه (PDO/Hash)، و کیفیت UI (همسانی سبک و ریسپانسیو) بوده‌اند.</p>
+
+  <h2>3) فناوری‌ها و معماری</h2>
+  <ul>
+    <li><b>Backend:</b> PHP 8.2، PDO، الگوی فایل‌محور.</li>
+    <li><b>Database:</b> MariaDB/MySQL، ایندکس‌ها و قیود خارجی.</li>
+    <li><b>Frontend:</b> HTML/CSS/JS، Bootstrap، استایل‌های app.css و style.css، فونت Vazir.</li>
+    <li><b>ساختار:</b> <code class="mono">includes/database.php</code> برای اتصال، صفحات PHP برای منطق و نما، <code class="mono">includes/media.php</code> برای مسیر تصاویر.</li>
+  </ul>
+
+  <h2>4) طراحی پایگاه‌داده</h2>
+  <p>جداول: users، instructors، courses، enrollments، posts، comments، ratings، contact_messages. کلید یکتا در enrollments (user_id, course_id)، قیود خارجی با حذف آبشاری، و ایندکس‌های پیشنهادی برای کارایی.</p>
+  <table>
+    <tr><th>جدول</th><th>ستون‌های کلیدی</th></tr>
+    <tr><td>users</td><td>id, username, email, password, role, created_at</td></tr>
+    <tr><td>courses</td><td>id, title, description, category, level, price, status, image_url, instructor_id</td></tr>
+    <tr><td>enrollments</td><td>id, user_id, course_id, status, enrolled_at (UNIQUE user_id,course_id)</td></tr>
+    <tr><td>instructors</td><td>id, name, bio, photo_url, created_at</td></tr>
+    <tr><td>posts</td><td>id, title, content, image_url, instructor_id, created_at</td></tr>
+    <tr><td>comments</td><td>id, user_id, post_id, content, status, created_at</td></tr>
+    <tr><td>ratings</td><td>id, user_id, instructor_id, rating, created_at</td></tr>
+    <tr><td>contact_messages</td><td>id, name, email, message, created_at</td></tr>
+  </table>
+
+  <h2>5) ویژگی‌ها و جریان‌های کاری</h2>
+  <ul>
+    <li><b>ثبت‌نام دوره:</b> <code class="mono">enroll.php</code> → <code class="mono">process_enrollment.php</code> (درج یا فعال‌سازی دوباره).</li>
+    <li><b>گزارش کاربران:</b> <code class="mono">admin_enrollments_report.php</code> + جزئیات <code class="mono">user_enrollments.php</code>.</li>
+    <li><b>گزارش اساتید:</b> <code class="mono">admin_instructors_report.php</code> + جزئیات <code class="mono">instructor_overview.php</code>.</li>
+  </ul>
+
+  <h2>6) امنیت و محرمانگی</h2>
+  <p>Prepared Statements، هش رمز عبور، کنترل نقش ادمین در <code class="mono">auth_check.php</code>، اعتبارسنجی آپلود، مدیریت سشن‌ها.</p>
+
+  <h2>7) تصمیمات پیاده‌سازی</h2>
+  <ul>
+    <li>جدول واسط با UNIQUE و هندلینگ Duplicate Key (1062).</li>
+    <li>اصلاح ORDER BY برای MariaDB بدون NULLS LAST (استفاده از زیرکوئری).</li>
+    <li>یکپارچه‌سازی UI ادمین با استایل سایت و فونت مشترک.</li>
+    <li>تابع <code class="mono">resolveCourseImage</code> برای نگاشت تصاویر PNG/JPG.</li>
+  </ul>
+
+  <h2>8) تست و کیفیت</h2>
+  <p>تست دستی سناریوهای کلیدی (ثبت‌نام، گزارش‌ها، تصاویر)، مدیریت استثناهای PDO، و اصلاح ناسازگاری‌های SQL.</p>
+
+  <h2>9) استقرار و پیکربندی</h2>
+  <ul>
+    <li>XAMPP روی Windows (Apache + PHP + MariaDB).</li>
+    <li>Import دیتابیس: <code class="mono">english_language_learning.sql</code> + اجرای <code class="mono">admin/create_enrollments_table.sql</code>.</li>
+    <li>تنظیم <code class="mono">includes/database.php</code> و اجرای <code class="mono">admin/setup.php</code>.</li>
+  </ul>
+
+  <h2>10) کارایی و مقیاس‌پذیری</h2>
+  <ul>
+    <li>ایندکس‌های کلیدی، Queryهای هدفمند.</li>
+    <li>پیشنهاد: صفحه‌بندی، Cache گزارش‌ها، CDN برای استاتیک‌ها.</li>
+  </ul>
+
+  <h2>11) توسعه آینده</h2>
+  <ul>
+    <li>پرداخت آنلاین، پنل کاربری پیشرفته، گواهی، آزمون و تکلیف، فروم.</li>
+    <li>چندزبانه‌سازی، نقش‌های پیشرفته، نوتیفیکیشن‌ها.</li>
+    <li>Docker، CI/CD، مانیتورینگ، بکاپ خودکار.</li>
+    <li>افزودن CSRF، محدودسازی نرخ، سیاست‌های آپلود سخت‌گیرانه‌تر.</li>
+  </ul>
+
+  <h2>12) محدودیت‌ها و ریسک‌ها</h2>
+  <p>عدم ORM، احراز هویت ساده، نیاز به سیاست‌های قوی‌تر آپلود و تست‌های خودکار بیشتر.</p>
+
+  <h2>13) نتیجه‌گیری</h2>
+  <p>معماری ساده و توسعه‌پذیر با UI یکپارچه نیازهای سامانه آموزشی سبک را برآورده می‌کند و با افزودن ماژول‌های پرداخت، محتوای تعاملی و DevOps آماده تولید خواهد بود.</p>
+
+  <div class="pagebreak"></div>
+  <h2>ضمیمه A: دیاگرام معماری</h2>
+  <p><img src="images/architecture.svg" alt="معماری سامانه" /></p>
+
+  <h2>ضمیمه B: ERD</h2>
+  <p><img src="images/erd.svg" alt="ERD سامانه" /></p>
+
+</body>
+</html>
+
+
